@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Check, Languages } from 'lucide-react';
+import { Globe, Check, Loader2 } from 'lucide-react';
 import { 
   Select, 
   SelectContent, 
@@ -15,18 +15,23 @@ import {
 } from '@/contexts/LanguageContext';
 
 export default function LanguageSelector() {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t, isLoading } = useLanguage();
 
   return (
     <Select 
       value={language} 
       onValueChange={(value) => setLanguage(value as LanguageType)}
+      disabled={isLoading}
     >
       <SelectTrigger 
         className="w-[180px] flex items-center gap-2 text-lg" 
         aria-label={t('selectLanguage')}
       >
-        <Languages size={24} />
+        {isLoading ? (
+          <Loader2 size={20} className="animate-spin" />
+        ) : (
+          <Globe size={20} />
+        )}
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

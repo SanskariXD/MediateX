@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { Check, X } from 'lucide-react';
+import TranslateableText from '../TranslateableText';
 
 interface MythFact {
   id: number;
@@ -53,8 +54,12 @@ export default function MythsVsFacts() {
   return (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold mb-2">Myths vs. Facts</h2>
-        <p className="text-muted-foreground">Tap each card to reveal the truth about mediation</p>
+        <h2 className="text-2xl font-bold mb-2">
+          <TranslateableText text="Myths vs. Facts" />
+        </h2>
+        <p className="text-muted-foreground">
+          <TranslateableText text="Tap each card to reveal the truth about mediation" />
+        </p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -72,10 +77,14 @@ export default function MythsVsFacts() {
                   <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-100 text-red-500 mb-4">
                     <X size={24} />
                   </div>
-                  <h3 className="text-lg font-bold mb-2 text-center">Myth</h3>
-                  <p className="text-center">{item.myth}</p>
+                  <h3 className="text-lg font-bold mb-2 text-center">
+                    <TranslateableText text="Myth" />
+                  </h3>
+                  <p className="text-center">
+                    <TranslateableText text={item.myth} />
+                  </p>
                   <Button variant="ghost" size="sm" className="mt-4">
-                    Reveal Fact
+                    <TranslateableText text="Reveal Fact" />
                   </Button>
                 </CardContent>
               </Card>
@@ -86,10 +95,14 @@ export default function MythsVsFacts() {
                   <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-100 text-green-500 mb-4">
                     <Check size={24} />
                   </div>
-                  <h3 className="text-lg font-bold mb-2 text-center">Fact</h3>
-                  <p className="text-center">{item.fact}</p>
+                  <h3 className="text-lg font-bold mb-2 text-center">
+                    <TranslateableText text="Fact" />
+                  </h3>
+                  <p className="text-center">
+                    <TranslateableText text={item.fact} />
+                  </p>
                   <Button variant="ghost" size="sm" className="mt-4">
-                    Show Myth
+                    <TranslateableText text="Show Myth" />
                   </Button>
                 </CardContent>
               </Card>

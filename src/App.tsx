@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Chatbot from "./pages/Chatbot";
 import Learn from "./pages/Learn";
@@ -26,8 +25,8 @@ const App = () => {
     // Show splash screen only on first visit
     return !localStorage.getItem('hasSeenSplash');
   });
-
-  const [initialRoute, setInitialRoute] = useState('/auth');
+  
+  const [navDestination, setNavDestination] = useState<string | null>(null);
 
   useEffect(() => {
     // Mark splash as seen after it's shown once
@@ -38,8 +37,8 @@ const App = () => {
 
   const handleSplashComplete = () => {
     setShowSplash(false);
-    // Navigate to auth page when splash screen completes
-    window.location.href = '/auth';
+    // Navigate to onboarding when splash screen completes
+    setNavDestination('/onboarding');
   };
 
   return (
@@ -48,20 +47,25 @@ const App = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/onboarding" element={<Onboarding />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/chatbot" element={<Chatbot />} />
-              <Route path="/learn" element={<Learn />} />
-              <Route path="/mediator-connect" element={<MediatorConnect />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+          {showSplash ? (
+            <SplashScreen onComplete={handleSplashComplete} />
+          ) : (
+            <BrowserRouter>
+              {navDestination && <Navigate to={navDestination} replace />}
+              <Routes>
+                {/* Redirect root path to onboarding */}
+                <Route path="/" element={<Navigate to="/onboarding" replace />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/onboarding" element={<Onboarding />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/chatbot" element={<Chatbot />} />
+                <Route path="/learn" element={<Learn />} />
+                <Route path="/mediator-connect" element={<MediatorConnect />} />
+                <Route path="/resources" element={<Resources />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          )}
         </TooltipProvider>
       </LanguageProvider>
     </QueryClientProvider>

@@ -6,7 +6,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { 
   MessageSquare, BookOpen, Users, FileText, 
-  HelpCircle, FileQuestion, UserSearch, BookType 
+  HelpCircle, FileQuestion, UserSearch, BookType,
+  Play, MapPin, Upload
 } from 'lucide-react';
 
 const Dashboard = () => {
@@ -53,25 +54,35 @@ const Dashboard = () => {
   
   const quickLinks = [
     { 
-      title: "What is mediation?", 
-      icon: <HelpCircle size={20} />,
-      path: '/learn' 
-    },
-    { 
-      title: "How to start mediation?", 
+      title: "Myths vs. Facts", 
       icon: <FileQuestion size={20} />,
-      path: '/learn' 
+      path: '/learn?tab=myths' 
     },
     { 
-      title: "Find a mediator", 
+      title: "Legal Library", 
+      icon: <BookType size={20} />,
+      path: '/learn?tab=library' 
+    },
+    { 
+      title: "Interactive Stories", 
+      icon: <Play size={20} />,
+      path: '/learn?tab=stories'
+    },
+    { 
+      title: "Find a Mediator", 
       icon: <UserSearch size={20} />,
       path: '/mediator-connect'
     },
     { 
-      title: "Legal terms guide", 
-      icon: <BookType size={20} />,
-      path: '/resources' 
-    }
+      title: "Document Upload", 
+      icon: <Upload size={20} />,
+      path: '/learn?tab=documents'
+    },
+    { 
+      title: "Nearby Mediators", 
+      icon: <MapPin size={20} />,
+      path: '/mediator-connect'
+    },
   ];
 
   return (
@@ -106,7 +117,7 @@ const Dashboard = () => {
         {/* Quick links section */}
         <section>
           <h3 className="text-lg font-medium mb-4">Quick Links</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {quickLinks.map((link, index) => (
               <Card 
                 key={index}

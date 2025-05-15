@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Check, Language } from 'lucide-react';
+import { Check, Languages } from 'lucide-react';
 import { 
   Select, 
   SelectContent, 
@@ -26,7 +26,7 @@ export default function LanguageSelector() {
         className="w-[180px] flex items-center gap-2 text-lg" 
         aria-label={t('selectLanguage')}
       >
-        <Language size={24} />
+        <Languages size={24} />
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

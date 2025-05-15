@@ -11,7 +11,6 @@ import Dashboard from "./pages/Dashboard";
 import Chatbot from "./pages/Chatbot";
 import Learn from "./pages/Learn";
 import MediatorConnect from "./pages/MediatorConnect";
-import Community from "./pages/Community";
 import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
@@ -28,7 +27,7 @@ const App = () => {
     return !localStorage.getItem('hasSeenSplash');
   });
 
-  const [initialRoute, setInitialRoute] = useState('/dashboard');
+  const [initialRoute, setInitialRoute] = useState('/auth');
 
   useEffect(() => {
     // Mark splash as seen after it's shown once
@@ -39,6 +38,8 @@ const App = () => {
 
   const handleSplashComplete = () => {
     setShowSplash(false);
+    // Navigate to auth page when splash screen completes
+    window.location.href = '/auth';
   };
 
   return (
@@ -57,7 +58,6 @@ const App = () => {
               <Route path="/chatbot" element={<Chatbot />} />
               <Route path="/learn" element={<Learn />} />
               <Route path="/mediator-connect" element={<MediatorConnect />} />
-              <Route path="/community" element={<Community />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

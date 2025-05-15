@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSelector from './LanguageSelector';
+import TranslateableText from './TranslateableText';
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -15,23 +16,23 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   
   const steps = [
     {
-      title: t('welcome'),
-      description: "Your guide to peaceful dispute resolution",
+      title: <TranslateableText text="Welcome to MediateX" />,
+      description: <TranslateableText text="Your guide to peaceful dispute resolution" />,
       image: "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     },
     {
-      title: t('whatIsMediation'),
-      description: "Mediation is a voluntary process where a neutral third party helps resolve disputes without going to court.",
+      title: <TranslateableText text="What is Mediation?" />,
+      description: <TranslateableText text="Mediation is a voluntary process where a neutral third party helps resolve disputes without going to court." />,
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     },
     {
-      title: t('whyMediation'),
-      description: "Faster than courts, more affordable, preserves relationships, and gives you control over the outcome.",
+      title: <TranslateableText text="Why Mediation?" />,
+      description: <TranslateableText text="Faster than courts, more affordable, preserves relationships, and gives you control over the outcome." />,
       image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     },
     {
-      title: t('howItHelps'),
-      description: "This app connects you with mediators, provides resources, and guides you through the whole process.",
+      title: <TranslateableText text="How It Helps" />,
+      description: <TranslateableText text="This app connects you with mediators, provides resources, and guides you through the whole process." />,
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     }
   ];
@@ -103,10 +104,13 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
                 
                 <div className="flex gap-2">
                   <Button variant="ghost" onClick={handleSkip}>
-                    {t('skip')}
+                    <TranslateableText text="Skip" />
                   </Button>
                   <Button onClick={handleNext}>
-                    {currentStep < steps.length - 1 ? t('next') : t('getStarted')}
+                    {currentStep < steps.length - 1 ? 
+                      <TranslateableText text="Next" /> : 
+                      <TranslateableText text="Get Started" />
+                    }
                   </Button>
                 </div>
               </div>

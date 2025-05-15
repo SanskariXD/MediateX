@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import LanguageSelector from '@/components/LanguageSelector';
 import { ArrowRight } from 'lucide-react';
+import TranslateableText from '@/components/TranslateableText';
 
 const Index = () => {
   const { t } = useLanguage();
@@ -26,7 +27,7 @@ const Index = () => {
               MediateX
             </div>
             <p className="text-xl opacity-90 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Empowering communities with accessible mediation solutions
+              <TranslateableText text="Empowering communities with accessible mediation solutions" />
             </p>
             <div className="hidden md:block">
               <Button 
@@ -35,7 +36,7 @@ const Index = () => {
                 style={{ animationDelay: '0.4s' }}
                 onClick={() => navigate('/auth')}
               >
-                {t('getStarted')} <ArrowRight className="ml-2" size={20} />
+                <TranslateableText text="Get Started" /> <ArrowRight className="ml-2" size={20} />
               </Button>
             </div>
           </div>
@@ -45,31 +46,31 @@ const Index = () => {
         <div className="w-full md:w-1/2 bg-background p-8 md:p-12 flex items-center">
           <div className="w-full max-w-md mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold mb-6 animate-fade-in">
-              {t('welcome')}
+              <TranslateableText text="Welcome to MediateX" />
             </h2>
             
             <div className="space-y-6">
               {/* Card 1 */}
               <div className="bg-muted rounded-lg p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <h3 className="font-bold text-lg mb-2">{t('whatIsMediation')}</h3>
+                <h3 className="font-bold text-lg mb-2"><TranslateableText text="What is Mediation?" /></h3>
                 <p className="text-muted-foreground">
-                  A peaceful way to resolve disputes with the help of a neutral third party without going to court.
+                  <TranslateableText text="A peaceful way to resolve disputes with the help of a neutral third party without going to court." />
                 </p>
               </div>
               
               {/* Card 2 */}
               <div className="bg-muted rounded-lg p-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <h3 className="font-bold text-lg mb-2">{t('whyMediation')}</h3>
+                <h3 className="font-bold text-lg mb-2"><TranslateableText text="Why Mediation?" /></h3>
                 <p className="text-muted-foreground">
-                  Faster, less expensive, and more collaborative than traditional litigation.
+                  <TranslateableText text="Faster, less expensive, and more collaborative than traditional litigation." />
                 </p>
               </div>
               
               {/* Card 3 */}
               <div className="bg-muted rounded-lg p-6 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                <h3 className="font-bold text-lg mb-2">{t('howItHelps')}</h3>
+                <h3 className="font-bold text-lg mb-2"><TranslateableText text="How It Helps" /></h3>
                 <p className="text-muted-foreground">
-                  This app connects you with mediators, resources, and a supportive community.
+                  <TranslateableText text="This app connects you with mediators, resources, and a supportive community." />
                 </p>
               </div>
             </div>
@@ -80,7 +81,7 @@ const Index = () => {
                 className="w-full bg-primary-blue hover:bg-primary-blue/90 text-lg" 
                 onClick={() => navigate('/auth')}
               >
-                {t('getStarted')} <ArrowRight className="ml-2" size={20} />
+                <TranslateableText text="Get Started" /> <ArrowRight className="ml-2" size={20} />
               </Button>
             </div>
           </div>

@@ -5,11 +5,11 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { FileText, Search, BookOpen, DocumentCheck, DocumentText, FileQuestion, Download, Volume2 } from 'lucide-react';
+import { FileText, Search, BookOpen, FileCheck, Download, Volume2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { ChevronDown, ChevronUp, MapPin } from '@/components/ui/icons';
+import { ChevronDown, ChevronUp } from '@/components/ui/icons';
 
 // Mock data for guides
 const guides = [
@@ -238,13 +238,13 @@ const Resources = () => {
           </TabsTrigger>
           <TabsTrigger value="legal">
             <div className="flex items-center gap-2">
-              <DocumentCheck size={18} />
+              <FileCheck size={18} />
               <span>Legal Documents</span>
             </div>
           </TabsTrigger>
           <TabsTrigger value="faqs">
             <div className="flex items-center gap-2">
-              <FileQuestion size={18} />
+              <FileText size={18} />
               <span>FAQs</span>
             </div>
           </TabsTrigger>
@@ -316,7 +316,7 @@ const Resources = () => {
                 <Card key={doc.id} className="p-4">
                   <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
                     <div className="bg-muted rounded-lg p-4 text-primary-blue">
-                      <DocumentText size={32} />
+                      <FileText size={32} />
                     </div>
                     
                     <div className="flex-1 text-center md:text-left">

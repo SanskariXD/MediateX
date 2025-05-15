@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSelector from './LanguageSelector';
@@ -12,7 +11,6 @@ interface SplashScreenProps {
 
 export default function SplashScreen({ onComplete }: SplashScreenProps) {
   const { t } = useLanguage();
-  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   
   const steps = [
@@ -45,25 +43,22 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         setCurrentStep(prev => prev + 1);
       } else {
         onComplete();
-        navigate('/dashboard');
       }
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [currentStep, navigate, onComplete, steps.length]);
+  }, [currentStep, onComplete, steps.length]);
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(prev => prev + 1);
     } else {
       onComplete();
-      navigate('/dashboard');
     }
   };
 
   const handleSkip = () => {
     onComplete();
-    navigate('/dashboard');
   };
 
   return (

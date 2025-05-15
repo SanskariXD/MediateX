@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Index from "./pages/Index";
@@ -27,6 +27,8 @@ const App = () => {
     // Show splash screen only on first visit
     return !localStorage.getItem('hasSeenSplash');
   });
+
+  const [initialRoute, setInitialRoute] = useState('/dashboard');
 
   useEffect(() => {
     // Mark splash as seen after it's shown once

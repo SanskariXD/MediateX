@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { FileUpload, FileText, Check, AlertCircle, Volume2, Languages } from 'lucide-react';
+import { FileText, Check, AlertCircle, Volume2, Languages, Upload } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -239,7 +239,7 @@ export default function DocumentUpload() {
               <CardContent>
                 <div className="grid gap-6">
                   <div className="border-2 border-dashed rounded-lg p-8 text-center">
-                    <FileUpload className="h-10 w-10 text-muted-foreground mx-auto mb-4" />
+                    <Upload className="h-10 w-10 text-muted-foreground mx-auto mb-4" />
                     <h3 className="font-medium mb-2">Drag and drop files here</h3>
                     <p className="text-sm text-muted-foreground mb-4">
                       Supports PDF, DOC, DOCX, JPG, PNG (Max 10MB)
@@ -266,7 +266,10 @@ export default function DocumentUpload() {
                         <Languages size={18} />
                         <Label>Translation</Label>
                       </div>
-                      <Select value={translateToLanguage} onValueChange={setTranslateToLanguage}>
+                      <Select 
+                        value={translateToLanguage} 
+                        onValueChange={(value) => setTranslateToLanguage(value as "en" | "hi" | "ta" | "bn" | "te" | "mr")}
+                      >
                         <SelectTrigger className="w-[180px]">
                           <SelectValue placeholder="Select language" />
                         </SelectTrigger>
